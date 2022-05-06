@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ import com.capg.entity.Counter;
 import com.capg.entity.UserDetail;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/customer")
 public class UserDetailController {
 
@@ -79,7 +81,7 @@ public class UserDetailController {
 
          if(info > 0) {
              System.out.println("Please Login to continue");
-             str = "Please Login to continue";
+             str = "You are already registered .Please Login to continue";
              
              throw new HandlingException(str);
          }else {
@@ -132,7 +134,7 @@ public class UserDetailController {
 
     		                 String transactioalID = ""+base+transactionalCount+bankCode;
     		                 if(inc == 1) {
-    		                     System.out.println("updated Successfully");
+    		                     System.out.println("Updated Successfully");
     		                     
     		                     accountDetailsCurrent.setAccountBalance(0.0);
     		                     accountDetailsCurrent.setAccountNumber(transactioalID);
@@ -148,16 +150,16 @@ public class UserDetailController {
     		                 return "Already Present";
     		             }
     		         }else {
-    		             return "invalid";
+    		             return "Invalid";
     		         }
     		   } else
         	   {
-        		   throw new HandlingException("aadhar card number doesn't exists"); 
+        		   throw new HandlingException("Aadhar card number doesn't exists"); 
         	   }
     	   }
     	   else
     	   {
-    		   throw new HandlingException("contact number doesn't exists"); 
+    		   throw new HandlingException("Contact number doesn't exists"); 
     	   }
     	  
          //Account Number = Base+Counter+BankCode
@@ -196,7 +198,7 @@ public class UserDetailController {
 
                 String transactioalID = ""+base+transactionalCount+bankCode;
                 if(inc == 1) {
-                    System.out.println("updated Successfully");
+                    System.out.println("Updated Successfully");
                     accountDetailsSaving.setAccountBalance(0.0);
                     accountDetailsSaving.setAccountNumber(transactioalID);
                     accountDetailsSaving.setAccountType("saving");
@@ -205,25 +207,25 @@ public class UserDetailController {
                     return "Saving Account created ";
                 }else {
                     System.out.println("Increment Failed");
-                    return "failed";
+                    return "Failed";
                 }
             }else {
                 return "Already Present";
             }
 
         }else {
-            return "invalid";
+            return "Invalid";
         }
 
     }
   		else
    	   {
-   		 throw new HandlingException("contact number doesn't exists");   
+   		 throw new HandlingException("Contact number doesn't exists");   
    	   }
   }
   	   else
   	   {
-  		 throw new HandlingException("contact number doesn't exists");   
+  		 throw new HandlingException("Contact number doesn't exists");   
   	   }
  }
      
@@ -251,7 +253,7 @@ public class UserDetailController {
          }
          else
          {
-        	throw new HandlingException("contact number doesn't exists"); 
+        	throw new HandlingException("Contact number doesn't exists"); 
          }
 
 

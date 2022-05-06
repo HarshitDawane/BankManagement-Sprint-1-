@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,7 @@ import com.capg.entity.Withdraw;
 import com.capg.services.DepositService;
 import com.capg.services.WithdrawService;
 
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/Employee")
 public class EmployeeController {
@@ -59,7 +60,7 @@ public class EmployeeController {
 	  LocalDateTime instantOfDeposit,instantOfWithdraw  ;
 	  
 	  
-	  
+	 
 	  
 	  
 	    @PostMapping("/EmployeeLogin")
@@ -133,23 +134,23 @@ public class EmployeeController {
 		      }
 		      else 
 		      {
-		    	  throw new HandlingException("account doesn't exists. Please Recheck your details.");
+		    	  throw new HandlingException("Account doesn't exists. Please Recheck your details.");
 		      }
 	    	  
 	         }
 		    else
 		    {
-		    	throw new HandlingException("account doesn't exists");
+		    	throw new HandlingException("Account doesn't exists");
 		    }
 	    }else 
 	    {
-	    	throw new HandlingException("employee doesn't exists");
+	    	throw new HandlingException("Employee doesn't exists");
 	    	
 	    }
 	    }
 	    else 
 	    {
-	    	throw new HandlingException("invalid input");
+	    	throw new HandlingException("Invalid input");
 	    }
 	}
 
@@ -190,18 +191,18 @@ public class EmployeeController {
 		    	  
 	         }
 	    	  else 
-	                throw new HandlingException("account doesn't exists. Please Recheck your details.");
+	                throw new HandlingException("Account doesn't exists. Please Recheck your details.");
 	    	  
 	      }
 	      else 
-	          throw new HandlingException("account doesn't exists");
+	          throw new HandlingException("Account doesn't exists");
 	      
 	    }
 	    	else
-	    		throw new HandlingException("employee doesn't exists");
+	    		throw new HandlingException("Employee doesn't exists");
 	    }
 	    else
-	       throw new HandlingException("input is invalid");
+	       throw new HandlingException("Input is invalid");
 	    
 		
 	}

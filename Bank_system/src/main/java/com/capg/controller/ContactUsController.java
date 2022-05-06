@@ -40,7 +40,7 @@ public class ContactUsController {
         if(!con.getContactNumber().toString().matches(mobilePattern))
         {
            
-            throw new HandlingException("please give valid Contact number");
+            throw new HandlingException("Please give a valid Contact number");
         }
 
         if(con.getMessage().isEmpty())
@@ -62,7 +62,7 @@ public class ContactUsController {
 		}
 		else
 		{
-			throw new HandlingException(" only admin can access the details.");
+			throw new HandlingException(" Only admin can access the details.");
 		}
 
     }

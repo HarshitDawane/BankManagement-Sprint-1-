@@ -9,6 +9,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +36,7 @@ import com.capg.entity.reponseDetails;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/admin")
 public class AdminController {
 	
@@ -98,8 +100,8 @@ public class AdminController {
 						throw new HandlingException("Incorrect Old Password");
 					}	
 				}else {
-					System.out.println("invalid Input");
-					throw new HandlingException("invalid Input");
+					System.out.println("Invalid Input");
+					throw new HandlingException("Invalid Input");
 				}			
 		
 			}else {
@@ -131,7 +133,7 @@ public class AdminController {
 		String regex_password = "^[a-zA-Z0-9@$!%*#?&]{8,}$";
 		
 		if(email.isEmpty() || password.isEmpty() ) {
-			System.out.println("fields can not be empty");
+			System.out.println("Fields can not be empty");
 		
 		}else {
 			if(email.matches(regex_email) && password.matches(regex_password)) {
@@ -170,21 +172,21 @@ public class AdminController {
 		if(!reg.getContact().toString().matches(pattern1))
 		{
 		
-			throw new HandlingException("invalid contact number");
+			throw new HandlingException("Invalid contact number");
 
 		}
 
 		if(!reg.getEmail() .matches(pattern2))
 		{
 			System.out.println("password is too weak");
-			throw new HandlingException("please enter valid email");
+			throw new HandlingException("Please enter valid email");
 
 		}
 
 
 		if(!reg.getPassword().equals(confirmPassword))
 		{
-			System.out.println("password and confirm_password are not same");
+			System.out.println("Password and confirm_password are not same");
 			throw new HandlingException("password and confirm_password are not same");
 		
 
